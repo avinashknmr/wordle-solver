@@ -1,4 +1,4 @@
-from utils import dictionary, wordle_words, LETTER_COUNT, ATTEMPT_LIMIT, GameResult, GuessResult
+from utils import dictionary, wordle_words, LETTER_COUNT, ATTEMPT_LIMIT, GameResult, CharResult
 import random
 
 class Wordle:
@@ -28,11 +28,11 @@ class Wordle:
             result = GameResult.FAILED_ATTEMPT
             for i, c in enumerate(guess):
                 if c == self.word[i]:
-                    tiles.append(GuessResult.GREEN)
+                    tiles.append(CharResult.GREEN)
                 elif c in self.word:
-                    tiles.append(GuessResult.YELLOW)
+                    tiles.append(CharResult.YELLOW)
                 else:
-                    tiles.append(GuessResult.BLACK)
+                    tiles.append(CharResult.BLACK)
             if all([t=='g' for t in tiles]):
                 result = GameResult.WON
             elif self.attempt == ATTEMPT_LIMIT:

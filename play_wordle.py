@@ -1,6 +1,6 @@
 from wordle import Wordle
 from solver import WordleSolver
-from utils import LETTER_COUNT, ATTEMPT_LIMIT, GuessResult, GameResult
+from utils import LETTER_COUNT, ATTEMPT_LIMIT, CharResult, GameResult
 import re
 
 class Game(Wordle):
@@ -19,11 +19,11 @@ class Game(Wordle):
         result = GameResult.FAILED_ATTEMPT
         for c in game_verdict:
             if c == 'g':
-                tiles.append(GuessResult.GREEN)
+                tiles.append(CharResult.GREEN)
             elif c == 'y':
-                tiles.append(GuessResult.YELLOW)
+                tiles.append(CharResult.YELLOW)
             elif c == 'b':
-                tiles.append(GuessResult.BLACK)
+                tiles.append(CharResult.BLACK)
         if all([t=='g' for t in tiles]):
             result = GameResult.WON
         elif self.attempt == ATTEMPT_LIMIT:

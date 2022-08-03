@@ -10,7 +10,7 @@ class GameResult:
     INVALID_TRY = 3
     INVALID_WORD = 4
 
-class GuessResult:
+class CharResult:
     GREEN = 'g'
     YELLOW = 'y'
     BLACK = 'b'

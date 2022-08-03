@@ -1,4 +1,4 @@
-from utils import dictionary, wordle_words, LETTER_COUNT, ATTEMPT_LIMIT, GameResult, GuessResult
+from utils import dictionary, wordle_words, LETTER_COUNT, ATTEMPT_LIMIT, GameResult, CharResult
 import string
 from collections import Counter
 import random
@@ -98,13 +98,13 @@ class WordleSolver:
             elif status == GameResult.FAILED_ATTEMPT:
                 for i, (c, r) in enumerate(zip(guess, result)):
                     self._untried_chars.discard(c)
-                    if r == GuessResult.GREEN:
+                    if r == CharResult.GREEN:
                         self._green_chars.add((c, i))
                         if c in self._yellow_chars:
                             self._yellow_chars.remove((c, i))
-                    elif r == GuessResult.YELLOW:
+                    elif r == CharResult.YELLOW:
                         self._yellow_chars.add((c, i))
-                    elif r == GuessResult.BLACK:
+                    elif r == CharResult.BLACK:
                         self._invalid_chars.add(c)
             elif status == GameResult.INVALID_WORD:
                 self.attempts -= 1
