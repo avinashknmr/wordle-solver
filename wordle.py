@@ -2,11 +2,10 @@ from utils import dictionary, wordle_words, LETTER_COUNT, ATTEMPT_LIMIT, GameRes
 import random
 
 class Wordle:
-    def __init__(self, word=None):
+    def __init__(self):
         self.attempt = 0
         self.dictionary = dictionary()
         self.wordle_words = wordle_words()
-        self.word = word if word is not None else self._get_new_word()
 
     def reset(self):
         self.attempt = 0
@@ -14,6 +13,9 @@ class Wordle:
     
     def _get_new_word(self):
         return random.choice(self.wordle_words)
+
+    def set_word(self, word):
+        self.word = word
 
     def check_answer(self, guess):
         if self.attempt < ATTEMPT_LIMIT:

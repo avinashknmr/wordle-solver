@@ -5,8 +5,8 @@ import random
 
 class WordleSolver:
     def __init__(self):
-        self._all_possible_words = set(dictionary())
-        self._possible_words = set(dictionary())
+        self._all_possible_words = set(wordle_words())
+        self._possible_words = set(wordle_words())
         self._green_chars = set()
         self._invalid_chars = set()
         self._yellow_chars = set()
@@ -15,7 +15,7 @@ class WordleSolver:
         self.tries = []
     
     def reset(self):
-        self._possible_words = set(dictionary())
+        self._possible_words = set(wordle_words())
         self._green_chars.clear()
         self._invalid_chars.clear()
         self._yellow_chars.clear()
@@ -63,7 +63,7 @@ class WordleSolver:
         untried_letters, freq_map = self.__get_probability_scores(self._possible_words)
         if len(untried_letters) > 1 and self.attempts <= ATTEMPT_LIMIT - 1:
             word_with_score = []
-            word_list = self._possible_words
+            word_list = self._all_possible_words
             for word in word_list:
                 letters = set(word)
                 untried_score = sum(untried_letters[c] if c in untried_letters else 0 for c in letters)

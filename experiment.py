@@ -3,7 +3,8 @@ from solver import WordleSolver
 
 class WordleExperiment:
     def __init__(self, word=None):
-        self.wordle = Wordle(word)
+        self.wordle = Wordle()
+        self.wordle.set_word(word)
         self.solver = WordleSolver()
     
     def solve(self):
